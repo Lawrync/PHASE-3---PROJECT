@@ -1,6 +1,6 @@
 # Welcome! In this project, I built a model to predict customer churn!
 
-![hello](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/Phase%203%20Project.png?raw=true)
+
 
 # Navigation
 
