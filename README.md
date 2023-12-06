@@ -1,109 +1,142 @@
-PROJECT 3
-Project Overview 
-Background Information 
-Domain
-In the ever-evolving landscape of the telecommunications industry, SyriaTel, a key player, confronts the critical challenge of customer churn—a phenomenon where subscribers discontinue their association with the provider. Against the backdrop of rapid technological advancements, shifting consumer preferences, and intense market competition, the need to understand and predict customer behavior is more pressing than ever. This project emerges as a response to this imperative, aspiring to construct a sophisticated binary classification model that not only anticipates customer churn but provides actionable insights for SyriaTel's strategic approach to customer retention.
-The telecommunications sector is characterized by its dynamic nature, where intricate interactions between service quality, pricing structures, and customer expectations influence the longevity of customer relationships. Customer churn, beyond being a financial concern, is a strategic puzzle that demands nuanced solutions. Our project is conceived to delve into the multifaceted aspects influencing churn, acknowledging that customer behavior is shaped by geographical variations, plan utilization patterns, and subtle indicators embedded in customer service interactions.
-Amidst this complexity, challenges such as data heterogeneity, feature identification, and nuanced indicator interpretation underscore the need for a comprehensive solution. Our proposed approach transcends the conventional by integrating geographical insights, granular usage metrics, and the subtle nuances of customer service interactions into the predictive model. The objective is not solely to predict churn but to empower SyriaTel with a strategic compass—enabling the anticipation of customer attrition and guiding tailored, preemptive measures for customer retention. As we embark on this journey, the goal is to contribute to SyriaTel's resilience, fostering a satisfied and loyal customer base in the dynamic landscape of the telecommunications market.
+# Welcome! In this project, I built a model to predict customer churn!
+
+![hello](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/Phase%203%20Project.png?raw=true)
+
+# Navigation
+
+* [Project Overview](#Project-Overview)
+* [EDA](#EDA)
+* [Model Analysis](#Model-Analysis)
+* [Future Work](#Future-Work)
+
+# Important Links
+
+* [Slideshow Presentation](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Non_Technical_Slideshow.pdf)
+* [Non-Technical Video Presentation](https://youtu.be/8KW4okIJfRc)
+* [Jupyter Notebook with Cleaning](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Notebooks/Cleaning.ipynb)
+* [Jupyter Notebook with Exploratory Data Analysis (EDA)](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Notebooks/EDA.ipynb)
+* [Jupyter Notebook Modeling and Validation](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Notebooks/Modeling.ipynb)
 
 
+# Project Overview
 
+SyriaTel Communications is a Telecommunications company that is looking to predict and prevent customer churn. Customer churn is when a customer leaves/discontinues their service with SyriaTel. Customer churn is a major problem for many service-based companies because it is so expensive. Not only does the company lose the customer's monthly/yearly payment, but they also incur a customer acquisition cost to replace that customer.
 
-Problem Statement
-In the realm of telecommunications, customer churn remains a critical challenge, and SyriaTel, a prominent player in the industry, is not immune to its impact. The dataset at hand encapsulates a diverse array of customer attributes, usage patterns, and service interactions, presenting a complex scenario for predicting customer churn accurately. The multifaceted challenges inherent in the dataset include data variability, non-normality of residuals, model evaluation complexities, outliers, data imbalance, categorical data intricacies, missing data, and multicollinearity.
+To help SyriaTel fix the problem of customer churn, I first conducted an Exploratory Data Analysis (EDA) and then built a machine learning classifier that will predict the customers that are going to churn. This way, SyriaTel can create a more robust strategy to circumvent their customers from churning.
 
-Objectives (used to solve my EDA)
-
-1.	 To construct a predictive model for customer churn that takes into account geographical variations, providing insights into regional variations in churn likelihood.
-2.	To explore usage metrics within the SyriaTel dataset and integrate them into the churn prediction model, enhancing its predictive accuracy by considering customer usage patterns.
-3.	To analyze customer service call data and extract relevant features, incorporating them into the churn prediction model. This ensures that customer service interactions are integral to predicting churn.
-4.	To develop a predictive model that anticipates customer churn for SyriaTel, proactively identifying potential churners before they discontinue their association with the telecom company.
-5.	To select suitable machine learning algorithms for the churn prediction model and train them on the preprocessed dataset. Consideration will be given to hyper parameter tuning to optimize algorithm performance.
-6.	To rigorously evaluate the performance of the developed predictive model, emphasizing interpretability. Insights gained will be translated into actionable recommendations for SyriaTel to enhance customer retention strategies in the telecom business.
-Data Understanding
-This project utilizes the SyriaTel Customer Churn dataset, accessible in the file 'bigml_59c28831336c6604c800002a.csv'  .  The dataset comprises a comprehensive collection of information pertaining to customer interactions, usage patterns, and demographic details within the telecommunications domain. The dataset serves as the foundation for predicting customer churn and formulating actionable insights for SyriaTel in the dynamic telecom industry
-Data Preparation
-The data utilized in our analysis was sourced from a CSV file, syriatel_churn_data.csv, and Pandas library was employed to import and structure the data into a DataFrame. The DataFrame encapsulates various features such as customer ID, date, pricing details, bedrooms, bathrooms, floor information, among others. In our pursuit of data accuracy and consistency, we conducted crucial data cleaning and preprocessing tasks. This involved addressing missing values, eliminating unnecessary rows, and ensuring uniform data types throughout the dataset. These measures were imperative in preparing our dataset for robust analysis. The transformation of the raw dataset into a meticulously structured DataFrame laid the groundwork for a comprehensive and insightful analysis of customer churn dynamics within SyriaTel's telecom domain.
-Data analysis 
-
-  
-Positive Correlation (Values closer to 1):
-'total day minutes' has a positive correlation of approximately 0.21 with 'churn.' This suggests that customers with higher total day minutes are slightly more likely to churn.
-'customer service calls' has a positive correlation of approximately 0.21 with 'churn.' This indicates that as the number of customer service calls increases, the likelihood of churn also increases.
-Negative Correlation (Values closer to -1):
-'number vmail messages' has a negative correlation of approximately -0.09 with 'churn.' This implies that customers with more voice mail messages are slightly less likely to churn.
-Weak Correlations (Values close to 0):
-Most other correlations are relatively weak, indicating a limited linear relationship.
-
-Modeling
-In the modeling phase, I began by preprocessing the training dataset, saving it as 'training_set.csv' for future use. To address the issue of class imbalance, I implemented the Synthetic Minority Over-sampling Technique (SMOTE), oversampling the minority class to achieve a more balanced distribution. Subsequently, I considered a variety of classification models, including Random Forest, K-Nearest Neighbors (KNN), Gradient Boosting, Gaussian Naive Bayes, and Support Vector Machines (SVM), to identify the most suitable model for the task. To streamline the process and ensure reproducibility, I set up a pipeline that incorporated the necessary steps, such as data transformation, resampling, and model training.
-A key step involved tuning the models through a grid search, exploring various hyper parameter combinations to optimize their performance. Additionally, I assessed feature importance using the Gradient Boosting model and visualized the results through a bar chart. This analysis provided insights into which features played a crucial role in the predictive performance of the model.
-Furthermore, I decided to create a new model using only the top 8 features based on their importance, aiming to evaluate whether this reduced set of features could maintain or enhance model performance while potentially saving computational resources. This comprehensive approach, encompassing data preprocessing, addressing class imbalance, model selection, hyper parameter tuning, and feature importance analysis, aimed to deliver a robust and effective solution for the classification task at hand.
-
-
-Model: SVC()
-Training Recall: 0.46680606377417666
-Testing Recall: 0.5851063829787234
- 
-Model: GaussianNB()
-Training Recall: 0.7522216414009409
-Testing Recall: 0.7872340425531915
+In the EDA portion, I explored the following questions: 
+* Is calling customer service a sign of customer unhappiness/potential churn?
+* How much are people using their plan? What can this tell us about churn?
+* Are customers in certain areas more likely to churn?
 
  
+**Scope & Data Used**
 
-Model: GradientBoostingClassifier()
-Training Recall: 0.7553580763199164
-Testing Recall: 0.7446808510638298
-
-Model: KNeighborsClassifier()
-Training Recall: 0.9790904338734971
-Testing Recall: 0.6063829787234043
-
-  
-Model: RandomForestClassifier()
-Training Recall: 1.0
-Testing Recall: 0.7340425531914894
-
- Validation Recall Score 0.83
-Training Recall Score 0.88
- 
-
-Based on this cost benefit analysis, our expected value from this strategy is 45 cents per customer per month. That may not seem like much, but for millions of customers it would add up. The good news here is that with this model predicting churn, we are not LOSING money! We can see the breakdown of each cost and benefit multiplied by the number of TP, TN, FP, FNs on the confusion matrix above.
-Conclusion
-To sum up, phone calls to customer service appear to be one of the most significant markers of client attrition. Additionally, we observe increased churn in some states, albeit it's unclear from the data why some states have a higher churn rate. Additionally, it is evident that a higher percentage of consumers with foreign plans churn than those without, possibly due to dissatisfaction with their plans.
-Recommendation
-1. We currently have a 14.5% churn rate for the training data set. Examining customer support calls, we may observe that the probability of churning rises in tandem with the quantity of calls. In particular, the chance of a customer churning rises from roughly 10% to 50% after at least 4 customer service calls.
-
-2. Calls to customer care do not by themselves ensure that a consumer will leave. Actually, most of the clients who DID NOT churn only placed one or two customer support calls. It's crucial to remember that the majority of DID churners made one to four customer support calls. Consequently, a client's likelihood of churning should be shown if they have made more than three calls to customer support.
-
-Recommendation: In light of these results, I would advise reviewing our customer service procedure. Offering a bigger incentive or discount to clients who contact customer support more than three times could be beneficial.
+This project used the churn in telecoms dataset, which can be found in the data folder, and on kaggle via [this link](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset). This dataset included 21 columns and 3333 unique values. It was already pretty clean with no large outliers or null values.
 
 
-3. It is evident that the utilization of day, night, and international calls was nearly same for both the consumers who did not churn and the ones who did. Regardless of whether the consumer has an international plan or not, the charges for foreign minutes are the same (27 cents per minute). It's also noteworthy that a higher proportion of international plan subscribers than non-international plan subscribers experienced consumer attrition. It's probable that consumers with international plans who churned did not think paying for the international plan was worthwhile because of this comparable cost for international calls.
+# EDA
 
->>>>These results lead me to suggest adjusting the international minute rates.  Customers with international plans should be able to make international calls at a lower cost than those without one.
+## Is calling customer service a sign of customer unhappiness/potential churn?
 
-4. It is evident that certain states have far greater churn than others. Texas has the most state-level turnover (27%), compared to all other states. California, Maryland, and New Jersey too have greater turnover rates (above 23%). Hawaii and Iowa have the lowest churn rates (less than.05%)
+**Findings**
 
-5. The variation in churn between states may be caused by several factors. One explanation might be the dearth of rivals in more remote locations like Hawaii and Iowa. There may be numerous other significant companies in the industry in states like Texas, California, or New Jersey, giving our clients more options if they decide to leave. Another factor can be the poor quality of service in some
+Our current churn rate for the training data set is about 14.5%. When we look at customer service calls, we can see that as the number of customer service calls increases, the *likelihood* of churning increases as well. Specifically, with at least 4 customer service calls, the likelihood of a customer churning increases from about 10% to 50%.
 
->>>>>>>In light of these results, I advise investigating competitors in high-churn jurisdictions such as Texas, California, New Jersey, and others to see whether they are running any initial promotions that could force some of our clients to leave. In order to determine whether any dead zones are causing the higher rates, I also advise examining the cell signal in these states with higher churn.
+![customer_service](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/customer_service_bar.png?raw=true)
 
-Obtain additional information on rivals in states with greater churn.
-Obtain additional cell signal data across the United States to identify trends in states with greater churn rates.
-Examine voicemail logs to determine whether it could be a useful predictor.
-Thank you 
-Deployment
- 
-   
+Customer service calls alone cannot guarantee that a customer will churn. In fact, the majority of customers who DID NOT churn made 1-2 customer service calls. However, it is important to note that the majority people who DID churn made 1-4 calls to customer service. Therefore, more than 3 calls to customer service should be a red flag that a customer is more likely to churn.
 
- 
+![customer_service_2](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/customer_service_boxen.png?raw=true)
 
- 
+**Recommendation:** 
 
- 
+Based on these findings, I would recommend revisiting our customer service protocol. It may be useful to offer a larger incentive/discount to customers making more than 3 calls to customer service. 
 
- 
 
- 
+## How much are people using their plan? What can this tell us about churn?
 
+**Findings**
+
+It is clear that the customers who churned and those that did not churn had almost exactly the same usage across day, eve, night and international calls. The rates for international minutes are the same regardless of whether the customer has an international plan or not (27 cents per minute). It is also interesting to note that the percentage of customers who churned was higher for customers with international plans than for customers without international plans. Because of this similar charge for international calls, it is possible that the customers who had an international plan and churned did not feel that paying for the international plan was worth it.
+
+![international_plan](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/international_plan_bar_subplots.png?raw=true)
+
+**Recommendations:**
+
+Based on these findings, I recommend changing the rates for international minutes. If a customer has an international plan, they should have cheaper rates for international calls than a customer without an international plan.
+
+
+## Are customers in certain areas more likely to churn?
+
+**Findings**
+
+It is clear that there are certain states with much higher churn. When grouped by state, Texas has a much higher churn than any other state (27%). New Jersey, Maryland and California also have higher churn (over 23%). States with the least churn include Hawaii and Iowa (under .05%). 
+
+![state_choropleth](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/churn_by_state_choropleth.png?raw=true)
+
+There could be a few reasons for this difference in churn in different states. One reason could be the lack of competitors in places like Hawaii and Iowa, which are more remote. States such as California, New Jersey or Texas could have many other big players in the market, which causes our customers to have other options when they feel inclined to leave. Another reason could be the lack of good service in certain areas in states with high churn.
+
+**Recommendations**
+
+Based on these findings, I would recommend looking into competitors in Texas, California, New Jersey, and other states with high churn to see if they are offering introductory offers that might compel some of our customers to churn. I also recommend looking into the cell signal in these states with higher churn to see if there are any deadzones contributing to the higher rates. 
+
+## EDA Conclusion
+
+In conclusion, calls to customer service seems to be one of the biggest indicators of customer churn. We can also see higher churn in certain states, although the reasons why specific states are more likely to churn is unclear based on this data. We can also see that customers may not be happy with their international plans, which is why customers with an international plan are more likely to churn than customers without an international plan.
+
+
+# Model Analysis
+
+My final model was a Gradient Boosting classifier, which can predict customer churn with 83% recall.
+    
+## Metric Used
+
+I used recall to score this model because with churn rate, false negatives will cost us more than false positives. For example, misidentifying someone as 'churned' and hitting them with a customer retention strategy to keep them engaged would be less costly than missing someone who churned, losing them as a customer AND having to pay a new customer acquisition cost to replace them. 
+
+
+## Cost Benefit Analysis
+
+Let's say the cost of a False Positive is having to give a customer a discount of 50% off one month of free service when they were not actually going to churn. For this analysis we will say that the **cost of a FP = 25 USD per customer (-25)**.
+
+Alternatively, the cost of a False Negative is losing that customer (and their monthly payment of 50 USD) and having to go out and get a new customer (customer acqusition cost of 50 USD). Therefore, we will say that the **cost of a FN = 100 USD per customer (-100)**.
+
+The benefit of a True Positive is keeping that customer on and having them continue paying their 50 USD monthly payment, minus the 50% discount. **Benefit of TP = 25**
+
+The **benefit of a True Negative = 0** since they were not going to churn and we predicted that, so we did not offer any discounts.
+
+![cb_analysis](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/cb_analysis.png?raw=true)
+
+Based on this cost benefit analysis, our expected value from this strategy is 52 cents per customer per month. That may not seem like much, but for millions of customers it would add up. The good news here is that with this model predicting churn, we are not LOSING money! We can see the breakdown of each cost and benefit multiplied by the number of TP, TN, FP, FNs on the confusion matrix above. 
+
+
+## Feature Importances
+
+The final model's feature importances are graphed below. 
+
+![feat_importances](https://github.com/tiaplagata/dsc-phase-3-project/blob/main/Images/feature_importances.png?raw=true)
+
+
+## Model Fit & Score
+
+The final model had the following training and validation recall scores:
+* Validation Recall Score 0.83
+* Training Recall Score 0.88
+
+Since these recall scores are so close, we can assume the model is slightly overfit, but overall very good on recall. This model produced only 9 (2%) false negatives for the validation set. It produced only 1 (0.003%) false positive from the validation set, but if our customer retention strategy is to keep these customers engaged, it is not a bad thing to keep a customer engaged who is mispredicted as potentially exiting.
+
+
+## Model Conclusion
+
+In conclusion, based on this model's recall score and cost benefit analysis, using this model to predict the churn of SyriaTel's customers will result in a large cost savings, and even an opportunity to make money ($0.52 per customer per month). 
+
+
+# Future Work
+
+If I had time to explore further, I would investigate the following:
+
+* Get more data regarding competitors in states with higher churn
+* Get more data on cell signal across the US to look for patterns in states with higher churn
+* Look into voicemail data to see if that may be a good indicator of churn
+* Continue to tweak this model to keep improving recall
+* Build a class for expected value and integrate it into the model's pipeline, then run a gridsearch using the expected value as the scoring method
