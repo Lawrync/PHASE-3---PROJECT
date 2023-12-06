@@ -128,7 +128,7 @@ Since these recall scores are so close, we can assume the model is slightly over
 
 ## Model Conclusion
 
-In conclusion, based on this model's recall score and cost benefit analysis, using this model to predict the churn of SyriaTel's customers will result in a large cost savings, and even an opportunity to make money ($0.52 per customer per month). 
+In conclusion, based on this model's recall score and cost benefit analysis, using this model to predict the churn of SyriaTel's customers will result in a large cost savings, and even an opportunity to make money ($0.45 per customer per month). 
 
 
 # Future Work
